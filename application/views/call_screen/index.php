@@ -10,7 +10,7 @@
                     </div>
                     <div class="card-body">
                         <?php if (!empty($report)) : ?>
-
+                            <input type="text" value="<?= $report->customer_name ?>" id="cust-name" hidden>
                             <?php if (!empty($report->phone_1)) : ?>
                                 <div class="call-section">
                                     <b><label class="mb-0">Phone 1</label></b>
@@ -107,7 +107,7 @@
                                 </tr>
                                 <tr>
                                     <td>Emergency Contact</td>
-                                    <!-- <td><?= $report->emergency_contact; ?></td> -->
+                                    <td><?= $report->emergency_phone; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Relation</td>
@@ -133,3 +133,4 @@
     const BASE_URL = "<?= base_url(); ?>";
 </script>
 <script src="<?= base_url('js/call/result.js'); ?>"></script>
+<script src="<?= base_url('js/call/index.js'); ?>"></script>

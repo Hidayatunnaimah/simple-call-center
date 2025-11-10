@@ -9,14 +9,13 @@ class CallScreen extends CI_Controller {
     }
 
     public function index() {
-        $user_id = 2; 
+        $user_id = $this->session->userdata('user_id'); 
         $data['report'] = $this->ResultModel->get_user_pending_report($user_id);
 
         if (!$data['report']) {
             $next_report = $this->ResultModel->get_unassigned_report();
 
             if ($next_report) {
-                var_dump($next_report);
                 $this->ResultModel->assign_report($next_report->id, $user_id);
                 redirect('CallScreen');
             } else {
