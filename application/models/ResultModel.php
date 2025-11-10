@@ -33,7 +33,6 @@ class ResultModel extends CI_Model
             }
         }
 
-        // Pencarian global (DataTables)
         $i = 0;
         foreach ($this->column_search as $item) {
             if ($_POST['search']['value']) {
@@ -50,7 +49,6 @@ class ResultModel extends CI_Model
             $i++;
         }
 
-        // Order
         if (isset($_POST['order'])) {
             $this->db->order_by($this->column_order[$_POST['order'][0]['column']], $_POST['order'][0]['dir']);
         } else {
@@ -110,5 +108,38 @@ class ResultModel extends CI_Model
             'note'          => $notes,
             'updated_at'    => date('Y-m-d H:i:s')
         ]);
+    }
+
+    public function agentByCategoryResult($user_id)
+    {
+        $this->db->select('result, COUNT(*) as total');
+        $this->db->from($this->table);
+        $this->db->where('user_assigned', $user_id);
+        $this->db->where('DATE(assign_created)', date('Y-m-d'));
+        $this->db->group_by('result');
+
+        $query = $this->db->get();
+        $data = $query->result_array();
+
+        $mapping = [
+            1 => 'PAID',
+            2 => 'PTP',
+            3 => 'MSG',
+            4 => 'NOAN',
+            5 => 'BPH'
+        ];
+
+        $resultData = [];
+        foreach ($mapping as $num => $label) {
+            $found = array_filter($data, function ($row) use ($num) {
+                return $row['result'] == $num;
+            });
+            $resultData[] = [
+                'result_label' => $label,
+                'total' => $found ? array_values($found)[0]['total'] : 0
+            ];
+        }
+
+        return $resultData;
     }
 }
