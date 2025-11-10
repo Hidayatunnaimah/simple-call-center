@@ -18,6 +18,14 @@ class Dashboard extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
+
+	public function index(){
+		if($this->session->userdata('is_admin') == 1){
+			return $this->admin();
+		} else if($this->session->userdata('is_admin') == 0){
+			return $this->agent();
+		}
+	}
 	public function admin()
 	{
 		$this->load->view('components/sidebar');

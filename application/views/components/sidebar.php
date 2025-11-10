@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title>Simple Call Center</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url() ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -38,7 +38,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">CC Admin</div>
+                <div class="sidebar-brand-text mx-3">CC <?= $this->session->userdata('role_id') == 1 ? 'Admin' : 'Agent'; ?></div>
             </a>
 
             <!-- Divider -->
@@ -46,12 +46,14 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="<?php echo base_url('') ?>">
+                <a class="nav-link" href="<?php echo base_url('dashboard') ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+        <?php if ($this->session->userdata('is_admin') == 1) 
+            {
+        ?>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
                     aria-expanded="true" aria-controls="collapsePages">
@@ -79,12 +81,23 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Result</span></a>
             </li>
+            <?php 
+                }
+            ?>
 
+
+        <?php if ($this->session->userdata('is_admin') == 0) 
+            {
+        ?>
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('callscreen') ?>">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Call Screen</span></a>
             </li>
+
+        <?php
+            }
+        ?>
 
         </ul>
         <!-- End of Sidebar -->
@@ -145,7 +158,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('real_name'); ?></span>
                                 <img class="img-profile rounded-circle"
                                     src="<?php echo base_url() ?>assets/img/undraw_profile.svg">
                             </a>
