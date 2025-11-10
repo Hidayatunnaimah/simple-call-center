@@ -5,6 +5,7 @@ class Task extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
 		$this->load->model('TaskModel');
+		check_auth();
 	}
 
 	/**
@@ -37,5 +38,17 @@ class Task extends CI_Controller {
             echo json_encode($reports);
         }
     }
+
+	public function download_template(){
+		$file_path = FCPATH . 'assets/template/Template_import_task.csv';
+
+        if (!file_exists($file_path)) {
+            show_404();
+            return;
+        }
+
+        $this->load->helper('download');
+        $data = file_get_contents($file_path);
+        force_download('template.csv', $data);
+	}
 }
-// 

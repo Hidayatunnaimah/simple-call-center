@@ -7,7 +7,11 @@
     </div>
     <div class="card-body">
         <div class="task-upload">
-            <button class="btn btn-primary"><i class="fas fa-fw fa-download"></i></button><a style="margin-left: 10px;" href="#">Download Template</a>
+            <a class="btn btn-primary text-white" href="<?= base_url('task/download_template') ?>">
+                <i class="fas fa-fw fa-download"></i>
+            </a>
+
+            <a style="margin-left: 10px;" href="<?= base_url('task/download_template') ?>">Download Template</a>
             </p>
             <hr>
             <label for="templateFile">Upload Template Here</label>
