@@ -109,10 +109,10 @@
                                     <td>Emergency Contact</td>
                                     <td><?= $report->emergency_phone; ?></td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td>Relation</td>
-                                    <!-- <td><?= $report->relation; ?></td> -->
-                                </tr>
+                                    <td><?= $report->relation; ?></td>
+                                </tr> -->
                             <?php else: ?>
                                 <tr>
                                     <td colspan="2" class="text-center">Tidak ada data ditemukan</td>
