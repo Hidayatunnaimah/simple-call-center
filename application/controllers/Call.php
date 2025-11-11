@@ -32,7 +32,9 @@ class Call extends CI_Controller
             ));
         } else {
             $channel = "SIP/" . $ext;
-            $exten = $prefix . $nk;
+            $exten = $prefix.$nk;
+            $exten = $prefix.$nk;
+            $extens = str_replace(' ', '',$exten);
             $context = "agentvisit";
             $priority = 1;
             $application = NULL;
@@ -44,7 +46,7 @@ class Call extends CI_Controller
             $async = TRUE;
             $actionid = NULL;
 
-            $has = $as->Originate($channel, $exten, $context, $priority, $application, $data, $timeout, $callerid, $variable, $account, $async, $actionid);
+            $has = $as->Originate($channel, $extens, $context, $priority, $application, $data, $timeout, $callerid, $variable, $account, $async, $actionid);
 
             echo json_encode(array("status" => TRUE, "data" => 'Calling Success Please Wait Micro SIP to Show Up..'));
 
