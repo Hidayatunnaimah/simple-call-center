@@ -6,6 +6,7 @@ class User extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        check_auth();
         $this->load->model('UserModel', 'user');
         $this->load->model('RoleModel', 'role');
         $this->load->helper('url');

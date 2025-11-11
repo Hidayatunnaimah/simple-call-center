@@ -7,6 +7,7 @@ class Call extends CI_Controller
     {
         parent::__construct();
         require_once APPPATH . 'third_party/phpagi/src/phpagi-asmanager.php';
+        check_auth();
     }
 
     public function index()
