@@ -1,34 +1,41 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class UserModel extends CI_Model
-{
+class UserModel extends CI_Model {
 
-    private $table = "m_user";
-    public function __construct()
-    {  }
+    private $table = 'm_user';
 
-    public function get_user($id){
-
-        $query = $this->db->get($this->table)->join("","","left")->get();
-
-        if ($id != null) {
-            $query->where("id", $id);
-        }
-        return $query->result_array();
+    public function getAll()
+    {
+        $this->db->select('m_user.*, m_role.role_name');
+        $this->db->from($this->table);
+        $this->db->join('m_role', 'm_role.id = m_user.role_id', 'left');
+        return $this->db->get()->result();
     }
 
-    public function show(array $data){
-        $this->db->insert($this->table, $data);
+    public function getById($id)
+    {
+        $this->db->select('m_user.*, m_role.role_name');
+        $this->db->from($this->table);
+        $this->db->join('m_role', 'm_role.id = m_user.role_id', 'left');
+        $this->db->where('m_user.id', $id);
+        $query = $this->db->get();
+        return $query->row();
     }
 
-    public function update($data, $id){ 
-        $this->db->where("id", $id);
+    public function insert($data)
+    {
+        return $this->db->insert($this->table, $data);
     }
 
-    public function delete($id){
-        $this->db->delete($this->table, array('id' => $id));
+    public function update($id, $data)
+    {
+        $this->db->where('id', $id);
+        return $this->db->update($this->table, $data);
     }
 
-
+    public function delete($id)
+    {
+        return $this->db->delete($this->table, ['id' => $id]);
+    }
 }

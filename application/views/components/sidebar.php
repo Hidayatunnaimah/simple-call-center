@@ -51,54 +51,57 @@
                     <span>Dashboard</span></a>
             </li>
 
-        <?php if ($this->session->userdata('is_admin') == 1) 
-            {
-        ?>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>User Management</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="login.html">Roles</a>
-                        <a class="collapse-item" href="<?php echo base_url('user') ?>">User</a>
+            <?php if ($this->session->userdata('is_admin') == 1) {
+            ?>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+                        aria-expanded="true" aria-controls="collapsePages">
+                        <i class="fas fa-fw fa-folder"></i>
+                        <span>User Management</span>
+                    </a>
+                    <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <!-- <a class="collapse-item" href="login.html">Roles</a> -->
+                            <a class="collapse-item" href="<?php echo base_url('user') ?>">User</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('task') ?>">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Task</span></a>
-            </li>
+                <!-- Nav Item - Charts -->
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('task') ?>">
+                        <i class="fas fa-fw fa-chart-area"></i>
+                        <span>Task</span></a>
+                </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('result') ?>">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Result</span></a>
-            </li>
-            <?php 
-                }
+                <!-- Nav Item - Tables -->
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('result') ?>">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Result</span></a>
+                </li>
+            <?php
+            }
             ?>
 
 
-        <?php if ($this->session->userdata('is_admin') == 0) 
-            {
-        ?>
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('callscreen') ?>">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Call Screen</span></a>
-            </li>
+            <?php if ($this->session->userdata('is_admin') == 0) {
+            ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo base_url('callscreen') ?>">
+                        <i class="fas fa-fw fa-table"></i>
+                        <span>Call Screen</span></a>
+                </li>
 
-        <?php
+            <?php
             }
-        ?>
+            ?>
 
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('audio') ?>">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Recordings</span></a>
+            </li>
         </ul>
         <!-- End of Sidebar -->
 
@@ -165,10 +168,10 @@
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
-                                </a>
+                                </a> -->
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
