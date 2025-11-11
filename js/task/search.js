@@ -8,6 +8,8 @@ $(document).ready(function () {
             data: {date: date},
             dataType: 'json',
             success: function(data) {
+                datas = JSON.parse(data)
+                console.log(datas)
                 var tbody = '';
                 var no = 1;
                 $.each(data, function(i, item) {
@@ -19,9 +21,9 @@ $(document).ready(function () {
                                 '<td>'+ item.phone_1 +'</td>'+
                                 '<td>'+ item.phone_2 +'</td>'+
                                 '<td>'+ item.emergency_contact +'</td>'+
-                                '<td>'+ item.emergency_number +'</td>'+
+                                '<td>'+ item.emergency_contact_number +'</td>'+
                                 '<td>'+ item.bill +'</td>'+
-                                '<td>'+ item.description +'</td>'+
+                                '<td>'+ item.desc +'</td>'+
                              '</tr>';
                 });
                 $('#dataTable tbody').html(tbody);

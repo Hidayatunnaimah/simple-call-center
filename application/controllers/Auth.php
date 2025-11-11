@@ -79,7 +79,7 @@ class Auth extends CI_Controller
     private function _redirect_by_role($is_admin)
     {
         if ($is_admin == 1) {
-            redirect('task/index');
+            redirect('task');
         } elseif ($is_admin == 0) {
             redirect('dashboard/agent');
         } else {
