@@ -63,7 +63,7 @@
                         <th>Address</th>
                         <th>Phone 1</th>
                         <th>Phone 2</th>
-                        <th>Emergency Number</th>
+                        <th>Agent Name</th>
                         <th>Result</th>
                         <th>Bill</th>
                         <th>Desc</th>
