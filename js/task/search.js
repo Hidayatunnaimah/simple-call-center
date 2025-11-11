@@ -8,8 +8,6 @@ $(document).ready(function () {
             data: {date: date},
             dataType: 'json',
             success: function(data) {
-                datas = JSON.parse(data)
-                console.log(datas)
                 var tbody = '';
                 var no = 1;
                 $.each(data, function(i, item) {
